@@ -1,0 +1,93 @@
+{%extends 'base.html'%}
+
+{%block content%}
+
+
+
+<div class="container">
+<h1>搜索结果共 : {{counts }} 个|数据来源表 : {{dbname}}</h1>
+
+ <ul class="nav nav-tabs">
+<li><a href="{%url 'index'%}" >返回主页</a> </li>
+<li class="active"><a href="#" >详细信息</a> </li>
+</ul>
+
+
+    {% for k in bea_list.object_list  %}
+        <table class="table table-striped table-bordered table-hover">
+
+        {% for key,value in k.items %}
+                        <tr class="info">
+                    <td>{{key}}</td>
+                    <td>{{value}}</td>
+                </tr>
+
+        {%endfor%}
+</table>
+
+        	<form  method="GET" action="{%url 'show'%}">
+		{%csrf_token%}
+		{% if k.url %}
+	    <button type="submit" class="btn btn-success" name="url" value="{{k.url}}">查看详情信息</button>
+    {% else %}
+	    <button type="submit" class="btn btn-success" name="ip" value="{{k.ip}}">查看详情信息</button>
+    {% endif %}
+	</form>
+
+
+        <hr>
+
+    {% endfor %}
+
+
+
+
+
+
+    <br>
+
+<br>
+    {# 存在上一页 #}
+    {% if bea_list.has_previous %}
+<button type="button" class="btn btn-success"><a href="?page={{ bea_list.previous_page_number}}&{{key}}={{value}}">上一页</a>
+</button>
+
+    {% endif %}
+
+    {# 存在下一页 #}
+    {% if bea_list.has_next %}
+<button type="button" class="btn btn-success">        <a href="?page={{ bea_list.next_page_number}}&{{key}}={{value}}">下一页</a>
+
+</button>
+
+    {% endif %}
+</div>
+
+
+
+
+
+{% endblock %}
+
+
+
+-------
+
+    {% for k in bea_list.object_list  %}
+        {% for key,value in k.items %}
+        <h4>{{key}}:{{value}}</h3>
+        {%endfor%}
+
+	<form  method="GET" action="{%url 'show'%}">
+		{%csrf_token%}
+		{% if k.url %}
+	    <button type="submit" class="btn btn-success" name="url" value="{{k.url}}">查看详情信息</button>
+    {% else %}
+	    <button type="submit" class="btn btn-success" name="ip" value="{{k.ip}}">查看详情信息</button>
+    {% endif %}
+
+	</form>
+        <hr>
+    {% endfor %}
+
+------------

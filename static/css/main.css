@@ -1,0 +1,59 @@
+/**/
+
+.side-bar .list-group-item{
+    border: 0;
+    /*不要边框*/
+    border-radius: 3px;
+    /*为元素添加圆角边框*/
+    margin-bottom: 5px;
+    /*每一项都有5个像素的间隙*/
+
+}
+
+.side-bar .list-group-item.active{
+    /*当左侧栏的某个元素被点击激活*/
+    background-color: #4cae4c;
+    /*那么背点击的元素的背景色就变成了绿色*/
+}
+
+img{
+    display: block;
+    /*display是设置元素显示的方式,block是一块状元素的方式显示*/
+    /*inline是以内联元素的方式显示，none是不不显示；块状元素会单独占据一样，其他元素跟他在同一行的会被迫换行，挤到下一行那里去，inline则不会这样*/
+    max-width: 100%;
+    /*最大显示不能超过他的母元素的100%*/
+    border-radius: 3px;
+    /*有个圆角*/
+}
+
+.news-list .title{
+    /*news-list 下的 title样式*/
+    display: block;
+    /*display是设置元素显示的方式,block是一块状元素的方式显示*/
+    font-size: 18px;
+    /*字体的大小*/
+    font-weight: bold;
+    /*字体为粗体*/
+    margin-bottom: 5px;
+    /*与下面的内容相距5个像素*/
+}
+.news-list .info{
+    color: #080808;
+    /*颜色变成纯黑色*/
+}
+a:hover{
+    /*当鼠标放在a标签上的时候*/
+    text-decoration: #46b8da;
+    /*鼠标就变成了蓝色*/
+}
+.news-list .title:hover{
+    text-decoration: #46b8da;
+}
+.news-list-item{
+    padding-top: 20px;
+    /*顶部间距*/
+    padding-buttom:20px;
+}
+.news-list-item:first-child{
+    padding-top: 0px;
+}

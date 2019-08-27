@@ -1,0 +1,55 @@
+﻿{% extends 'base.html' %}
+{% load static %}
+
+
+
+{% block title %}
+LangSrc|资产监控平台 用户登陆
+{% endblock %}
+
+
+
+{% block content %}
+	<body>
+
+		<div class="container">
+			<div class="row">
+			</div>
+			<div class="row">
+				<div class="col-md-4 col-md-offset-4">
+					
+
+					<form action="{% url 'check_login'%}" method="POST" class="fh5co-form animate-box" data-animate-effect="fadeIn">
+						 {% csrf_token %}
+						<h2>用户登陆</h2>
+						<div class="form-group">
+							<label for="username" class="sr-only">Username</label>
+							<input type="text" class="form-control" name="username" placeholder="Username" autocomplete="off">
+						</div>
+						<div class="form-group">
+							<label for="password" class="sr-only">Password</label>
+							<input type="password" class="form-control" name="password" placeholder="Password" autocomplete="off">
+						</div>
+						<div class="form-group">
+							<label for="password" class="sr-only">UserKey</label>
+							<input type="password" class="form-control" name="userkey" placeholder="UserKey" autocomplete="off">
+						</div>
+						<div class="form-group">
+							<button type="submit" class="btn btn-default btn-lg btn-block">登陆</button>
+						</div>
+					</form>
+					<!-- END Sign In Form -->
+
+				</div>
+			</div>
+
+		</div>
+	
+
+{% endblock %}
+
+
+<link rel="stylesheet" href="{% static 'js/modernizr-2.6.2.min.js' %}">
+<link rel="stylesheet" href="{% static 'js/jquery.placeholder.min.js' %}">
+<link rel="stylesheet" href="{% static 'js/jquery.waypoints.min.js' %}">
+<link rel="stylesheet" href="{% static 'js/main.js' %}">

@@ -1,6 +1,4 @@
 
-**因某些原因，最新版本暂时停止一段时间**
-
 
 # 前言
 思路参考来自[@guimaizi](https://github.com/guimaizi/get_domain)师傅的子域名收集与监测V3.0，以及Django练习时长两周半完成的一套Src子域名资产检测系统。
@@ -112,6 +110,8 @@ LangSrcCurise资产监控系统是一套通过网络搜索引擎监控其下指�
 2. python3 manage.py migrate
 3. python3 manage.py createsuperuser # 按照提示注册生成管理员账号密码
 
+若出现django.session.table相关错误，修改settings.py中SECRET_KEY值为随机字符串
+
 ## 初始化监控域名
 
 编辑域名：在 initialize 文件夹 编辑 domains.list 文件
@@ -133,7 +133,7 @@ LangSrcCurise资产监控系统是一套通过网络搜索引擎监控其下指�
 
 	Auxiliary/SubDomainDict.list
 
-通过连续爆破139个SRC主域名，每个SRC测试59W条子域名字典，通过判断存活的子域名的方式过滤出来的高质量子域名字典，请勿修改文件名
+通过连续爆破19个SRC主域名，每个SRC测试59W条子域名字典，通过判断存活的子域名的方式过滤，按照重复数量统计前排字典，请勿修改文件名
 
 ## 启动服务
 
@@ -186,13 +186,13 @@ LangSrcCurise资产监控系统是一套通过网络搜索引擎监控其下指�
 
 **默认不会扫描网址对应IP主机的端口服务，可以开启但是速度会降低，并且目前没有检测CDN，酌情处理，不建议开启**
 
-如果需要开启端口扫描以加快子域名获取：
+如果需要开启端口扫描：
 
 取消注释		
 
 	core/Run_Tasks.py  
 
-第110行和111行
+第111行和112行
 
 **还能扫描C段信息，取消部分注释就行，可以但没必要**
 

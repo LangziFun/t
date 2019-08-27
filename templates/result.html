@@ -1,0 +1,92 @@
+{%extends 'base.html'%}
+
+{%block content%}
+
+
+
+<div class="container">
+<h1>数据详情报表</h1>
+
+ <ul class="nav nav-tabs">
+<li><a href="{%url 'index'%}" >返回主页</a> </li>
+<li class="active"><a href="#" >详细信息</a> </li>
+</ul>
+
+<table class="table table-striped table-bordered table-hover">
+
+<tr class="info">
+        <td><h3>序号</td><td><h3>{{bea_list.uid}}</td>
+        </tr>
+        <td><h3>网址：</td><td><h3>{{bea_list.url}}</td>
+        </tr>
+                <td><h3>标题：</td><td><h3>{{bea_list.title}}</td>
+        </tr>
+                <td><h3>状态码：</td><td><h3>{{bea_list.status}}</td>
+        </tr>
+                <td><h3>中间件：</td><td><h3>{{bea_list.power}}</td>
+        </tr>
+                <td><h3>服务器：</td><td><h3>{{bea_list.server}}</td>
+        </tr>
+                <td><h3>IP 地址：</td><td><h3>{{bea_list.ip}}    
+
+    <form  method="GET" action="{%url 'search'%}">
+        {%csrf_token%}
+        <button type="submit" class="btn btn-warning btn-lg" name="gip" value="{{bea_list.ip}}">该IP部署站点|{{ip_counts}}个</button>
+    </form></h2>
+
+    <form  method="GET" action="{%url 'search'%}">
+        {%csrf_token%}
+        <button type="submit" class="btn btn-info btn-lg" name="cip" value="{{bea_list.cs}}">C  段存活主机|{{c_counts}}个</button>
+    </form></h2>
+
+
+</td>
+        </tr>
+                <td><h3>开放服务：</td><td><h3>{{bea_list.servers}}</td>
+        </tr>
+                <td><h3>部署网站：</td><td><h3>{{bea_list.alive_urls}}</td>
+        </tr>
+                <td><h3>主机类型：</td><td><h3>{{bea_list.host_type}}</td>
+        </tr>
+                <td><h3>归属地区：</td><td><h3>{{bea_list.area}}</td>
+        </tr>
+                <td><h3>隶属域名：</td><td><h3>{{bea_list.belong_domain}}</td>
+                </tr>
+                <td><h3>隶属C段：</td><td><h3>{{bea_list.cs}}</td>
+
+        </tr>
+                <td><h3>修改时间：</td><td><h3>{{bea_list.change_time}}</td>
+        </tr>
+        <tr class="success">
+                <td><h3>数据完整：</td><td><h3>{{bea_list.success}}</td>
+        </tr>
+        <tr class="danger">
+                <td><h3>检测渗透：</td><td><h3>{{bea_list.check}}</td>
+        </tr>
+
+</table>
+
+
+
+
+{%if totla%}
+
+    <form  method="GET" action="{%url 'change'%}">
+        {%csrf_token%}
+        <button type="submit" class="btn btn-success btn-block  btn-lg" name="url" value="{{bea_list.url}}">设置为已渗透检测</button>
+    </form>
+{%else%}
+    <form  method="GET" action="{%url 'change'%}">
+        {%csrf_token%}
+        <button type="submit" class="btn btn-danger btn-block  btn-lg" name="ip" value="{{bea_list.url}}">设置为未渗透检测</button>
+    </form>
+
+{%endif%}
+        <hr>
+
+
+
+
+
+{% endblock %}
+

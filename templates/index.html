@@ -1,0 +1,141 @@
+{% extends 'base.html' %}
+{% block content%}
+
+<div class="navbar navbar-default">
+<div class="navbar-header">
+    <a class="navbar-brand" href="{%url 'index'%}">LangSrc资产监控平台</a>
+</div>
+
+    <ul class="nav navbar-nav">
+        <li><a href="http://www.langzi.fun/index.html">首页</a></li>
+        <li><a href="http://www.langzi.fun/categories/">分类</a></li>
+        <li><a href="http://www.langzi.fun/tags/">详情</a></li>
+        <li><a href="https://github.com/LangziFun">下载</a></li>
+        <li><a href="#">吃饭</a></li>
+        <li><a href="#">睡觉</a></li>
+
+    </ul>
+
+    <form class="navbar-form navbar-right"action="{%url 'add_url'%}" method="GET">
+        <div class="form-group">
+            <input type="text" class="form-control" value="http://langzi.qq.com" name='url'>
+        </div>
+        <button type="submit" class="btn btn-default" >添加网址</button>
+    </form>
+
+        <form class="navbar-form navbar-right" action="{%url 'add_ip'%}" method="GET">
+        <div class="form-group">
+            <input type="text" class="form-control" value="127.0.0.1" name='ip'>
+        </div>
+        <button type="submit" class="btn btn-default" >添加IP</button>
+    </form>
+
+    <ul class="nav navbar-nav navbar-right">
+        	<form  method="GET" action="#">
+		{%csrf_token%}
+    <ul class="nav navbar-nav">
+        <li ><a href="{%url 'login_out'%}" >注销</a></li>
+</ul>
+	</form>
+    </ul>
+
+
+    <ul class="nav navbar-nav navbar-right">
+    	<li class="active"><a href="#">当前用户 : {{user}}</a></li>
+    </ul>
+
+
+
+
+
+</div>
+
+<div class="col-sm-5">
+	<h1>监控域名捕获总数量:{{domain_counts}}</h1>
+	<br>
+  {{ bar_ech|safe }}
+<br>
+  {{ line_ech|safe }}
+
+
+</div>
+<div class="col-sm-5">
+	<h1>监控域名所属IP捕获总数量:{{ip_counts}}</h1>
+	<br>
+	{{geo_ech|safe}}
+	<br>
+	{{ddd_ech|safe}}
+</div>
+
+<div class="col-sm-2">
+	<form class="form-inline" action="{%url 'search'%}" method="GET">
+		{%csrf_token%}
+		 <div class="input-group-addon">域名搜索:
+		<input type="text" name="url" class="form-control" value="qq.com">
+		<button class="btn btn-default">搜索</button>
+		</div>
+	</form>
+<hr>
+	<form class="form-inline" action="{%url 'search'%}" method="GET">
+		{%csrf_token%}
+		 <div class="input-group-addon">标题搜索:
+		<input type="text" name="title" class="form-control" value="腾讯游戏">
+		<button class="btn btn-default">搜索</button>
+		</div>
+	</form>
+
+<hr>
+	<form class="form-inline" action="{%url 'search'%}" method="GET">
+		{%csrf_token%}
+		 <div class="input-group-addon">网页搜索:
+		<input type="text" name="content" class="form-control" value="不充钱玩个锤子">
+		<button class="btn btn-default">搜索</button>
+		</div>
+	</form>
+
+<hr>
+	<form class="form-inline" action="{%url 'search'%}" method="GET">
+		{%csrf_token%}
+		 <div class="input-group-addon">IP 搜索:
+		<input type="text" name="ip" class="form-control" value="127.0.0.1">
+		<button class="btn btn-default">搜索</button>
+		</div>
+	</form>
+
+<hr>
+	<form class="form-inline" action="{%url 'search'%}" method="GET">
+		{%csrf_token%}
+		 <div class="input-group-addon">端口搜索:
+		<input type="text" name="port" class="form-control" value="3306">
+		<button class="btn btn-default">搜索</button>
+		</div>
+	</form>
+
+<hr>
+	<form class="form-inline" action="{%url 'search'%}" method="GET">
+		{%csrf_token%}
+		 <div class="input-group-addon">服务搜索:
+		<input type="text" name="server" class="form-control" value="mysql">
+		<button class="btn btn-default">搜索</button>
+		</div>
+	</form>
+
+<hr>
+	<form class="form-inline" action="{%url 'search'%}" method="GET">
+		{%csrf_token%}
+		 <div class="input-group-addon">地区搜索:
+		<input type="text" name="area" class="form-control" value="北京">
+		<button class="btn btn-default">搜索</button>
+		</div>
+	</form>
+
+<hr>
+	<form class="form-inline" action="{%url 'search'%}" method="GET">
+		{%csrf_token%}
+		 <div class="input-group-addon">响应搜索:
+		<input type="text" name="status" class="form-control" value="403">
+		<button class="btn btn-default">搜索</button>
+		</div>
+	</form>
+</div>
+{%endblock%}

@@ -1,0 +1,18 @@
+{%extends 'base.html'%}
+
+{%block content%}
+
+
+
+<div class="container">
+<h1>资产表无数据</h1>
+
+ <ul class="nav nav-tabs">
+<li><a href="{%url 'index'%}" >返回主页</a> </li>
+<li class="active"><a href="#" >详细信息</a> </li>
+</ul>
+<h1>该 IP/站点 不属于监控域名下相关资产</h1>
+<br>
+<h2>SRC资产表不清洗该 IP/站点 相关信息数据，如需查看该 IP/站点 详情，请在主页中搜索相关信息</h2>
+{% endblock %}
+
