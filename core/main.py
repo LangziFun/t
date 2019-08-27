@@ -31,6 +31,11 @@ Gloval_Check = {'domain':'qq.com','counts':0}
 
 #Sem = multiprocessing.Manager().BoundedSemaphore(1)
 
+Dicts = os.path.join('Auxiliary','Black_Ip.list')
+
+black_ip = list(set([x.strip() for x in open(Dicts, 'r', encoding='utf-8').readlines()]))
+
+
 def Except_Log(stat,url,error):
     print('错误代码 [{}] {}'.format(stat,str(error)))
     try:
@@ -97,6 +102,8 @@ def Add_Data_To_Url(url):
     try:
         ip = get_host(url)
         if ip == '获取失败':
+            return
+        if ip in black_ip:
             return
         # print('[+ Domain UrlIP] IP解析 --> {}  IP --> {}'.format(url, ip))
        #  Sem.acquire()

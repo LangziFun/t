@@ -129,6 +129,12 @@ LangSrcCurise资产监控系统是一套通过网络搜索引擎监控其下指�
 
 其下的网址都会被自动过滤，请勿修改文件名
 
+## 配置IP过滤黑名单
+
+	Auxiliary/Black_Ip.list
+
+其下的IP地址都会自动过滤，请勿修改文件名
+
 ## 配置子域名爆破字典
 
 	Auxiliary/SubDomainDict.list
