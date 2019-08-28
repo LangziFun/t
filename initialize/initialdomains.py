@@ -75,7 +75,7 @@ class BeiAn:
 
 def initialdomains():
     Dicts = os.path.join('initialize', 'domains.list')
-    tasks = [x.strip() for x in open(Dicts,'r').readlines()]
+    tasks = list(set([x.strip() for x in open(Dicts,'r').readlines()]))
     for task in tasks:
         try:
             print('当前检测URL：{}'.format(task))

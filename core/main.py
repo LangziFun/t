@@ -80,12 +80,12 @@ def get_host(url):
         url = url.split(':')[0]
     try:
         s = socket.gethostbyname(url)
-        return s
+        return str(s)
     except Exception as e:
         time.sleep(2)
         try:
             s = socket.gethostbyname(url)
-            return s
+            return str(s)
         except Exception as e:
             Except_Log(stat=24, url=url+'|获取IP失败', error=str(e))
             return '获取失败'
