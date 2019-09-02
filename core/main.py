@@ -104,7 +104,7 @@ def Add_Data_To_Url(url):
         if ip == '获取失败':
             return
         if ip in black_ip:
-            print('{} : {}所属IP触发IP黑名单 已过滤'.format(url,ip))
+            # print('{} : {}所属IP触发IP黑名单 已过滤'.format(url,ip))
             return
         # print('[+ Domain UrlIP] IP解析 --> {}  IP --> {}'.format(url, ip))
        #  Sem.acquire()
