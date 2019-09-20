@@ -248,36 +248,54 @@ def change(request):
     return HttpResponse('<script>alert("设置成功")</script>')
 
 @login_required
+@login_required
 def show(request):
     KEY = list(request.GET.keys())[1]
     # url
     VALUE = request.GET.get(KEY)
     try:
         if KEY == 'url':
-            Res = Show_Data.objects.filter(url=VALUE)[0]
+            Res = Show_Data.objects.filter(url=VALUE.replace('%3A%2F%2F','://'))[0]
             ip_counts = len(Other_Url.objects.filter(ip=Res.ip))
             c_counts = len(IP.objects.filter(cs=Res.cs))
-
             check = Res.check
+
+
+            RRes_servers = eval(Res.servers) if Res.servers != 'None' and Res.servers != '{}' else {'端口服务':'暂无信息'}
+            RRes_alive_urls = eval(Res.alive_urls) if Res.alive_urls != 'None' and Res.alive_urls != '[]' else [{'部署网站':'暂无信息'}]
+
+            RRess = {}
+            RRess['servers'] = RRes_servers
+            RRess['alive_urls'] = RRes_alive_urls
+
+            #print(RRess)
             if check == '否':
                 total = '1'
-                return render(request, 'result.html', {'bea_list': Res,'totla':total,'ip_counts':ip_counts,'c_counts':c_counts})
+                return render(request, 'result.html', {'bea_list': Res,'RRess':RRess,'totla':total,'ip_counts':ip_counts,'c_counts':c_counts})
             else:
-                return render(request, 'result.html', {'bea_list': Res,'ip_counts':ip_counts,'c_counts':c_counts})
+                return render(request, 'result.html', {'bea_list': Res,'RRess':RRess,'ip_counts':ip_counts,'c_counts':c_counts})
         if KEY == 'ip':
             Res = Show_Data.objects.filter(ip=VALUE)[0]
             ip_counts = len(Other_Url.objects.filter(ip=Res.ip))
             c_counts = len(IP.objects.filter(cs=Res.cs))
 
+            RRes_servers = eval(Res.servers) if Res.servers != 'None' and Res.servers != '{}' else {'端口服务':'暂无信息'}
+            RRes_alive_urls = eval(Res.alive_urls) if Res.alive_urls != 'None' and Res.alive_urls != '[]' else [{'部署网站':'暂无信息'}]
+
+            RRess = {}
+
+            RRess['servers'] = RRes_servers
+            RRess['alive_urls'] = RRes_alive_urls
+
             check = Res.check
             if check == '否':
                 total = '1'
-                return render(request, 'result.html', {'bea_list': Res,'totla':total,'ip_counts':ip_counts,'c_counts':c_counts})
+                return render(request, 'result.html', {'bea_list': Res,'RRess':RRess,'totla':total,'ip_counts':ip_counts,'c_counts':c_counts})
             else:
-                return render(request, 'result.html', {'bea_list': Res,'ip_counts':ip_counts,'c_counts':c_counts})
-    except:
+                return render(request, 'result.html', {'bea_list': Res,'RRess':RRess,'ip_counts':ip_counts,'c_counts':c_counts})
+    except Exception as e:
+        print(e)
         return render(request, 'nodata.html')
-
 @login_required
 def search(request):
     if request.method == 'GET':

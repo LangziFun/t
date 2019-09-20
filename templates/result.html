@@ -1,5 +1,5 @@
 {%extends 'base.html'%}
-
+{% load static %}
 {%block content%}
 
 
@@ -14,10 +14,12 @@
 
 <table class="table table-striped table-bordered table-hover">
 
+
 <tr class="info">
+    <h1>详情信息</h1>
         <td><h3>序号</td><td><h3>{{bea_list.uid}}</td>
         </tr>
-        <td><h3>网址：</td><td><h3>{{bea_list.url}}</td>
+        <td><h3>网址：</td><td><h3><a href="{{bea_list.url}}">{{bea_list.url}}</a></td>
         </tr>
                 <td><h3>标题：</td><td><h3>{{bea_list.title}}</td>
         </tr>
@@ -42,10 +44,22 @@
 
 </td>
         </tr>
-                <td><h3>开放服务：</td><td><h3>{{bea_list.servers}}</td>
+
+                <td><h3>开放服务：</td><td><h3>{% for k,v in RRess.servers.items %}
+                        {{k}}:{{v}}<br>
+                        {%endfor%}
+                </td>
         </tr>
-                <td><h3>部署网站：</td><td><h3>{{bea_list.alive_urls}}</td>
+
+
+                <td><h3>部署网站：</td><td><h3>{% for lis in RRess.alive_urls%}
+                    {% for k,v in lis.items %}
+                   <a href="{{k}}">{{k}}</a>>>状态码:{{v}}<br>
+                {%endfor%}
+{%endfor%}
+                </td>
         </tr>
+
                 <td><h3>主机类型：</td><td><h3>{{bea_list.host_type}}</td>
         </tr>
                 <td><h3>归属地区：</td><td><h3>{{bea_list.area}}</td>
@@ -64,7 +78,7 @@
                 <td><h3>检测渗透：</td><td><h3>{{bea_list.check}}</td>
         </tr>
 
-</table>
+        </table>
 
 
 
@@ -83,6 +97,8 @@
 
 {%endif%}
         <hr>
+
+
 
 
 

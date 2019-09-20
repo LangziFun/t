@@ -82,7 +82,7 @@ class Brute:
     def __init__(self,domain):
         self.domain = domain
         self.dicts = list(set([subdoma.strip() + '.' + self.domain for subdoma in sub_lists]))
-        self.FakeDomain_IP = Get_Url_Ip('kamjove1989.'+self.domain)
+        self.FakeDomain_IP = Get_Url_Ip('langzifun.'+self.domain)
 
     async def check_url_alive(self,url):
         # print('Scan:'+url)
