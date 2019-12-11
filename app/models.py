@@ -28,7 +28,7 @@ class IP(models.Model):
 
 class Domains(models.Model):
     uid = models.AutoField(primary_key=True)
-    url = models.CharField(max_length=30, unique=True, verbose_name='域名')
+    url = models.CharField(max_length=150, unique=True, verbose_name='域名')
     BA_sex = models.CharField(max_length=50,default='企业', verbose_name='性质')
     BA_name = models.CharField(max_length=50, verbose_name='名称')
     BA_id = models.CharField(max_length=50, verbose_name='编号')
@@ -42,7 +42,7 @@ class Domains(models.Model):
 
 class Content(models.Model):
     uid = models.AutoField(primary_key=True)
-    url = models.CharField(max_length=50,unique=True,verbose_name='索引网址')
+    url = models.CharField(max_length=150,unique=True,verbose_name='索引网址')
     content = models.TextField(verbose_name='网页内容')
     change_time = models.DateTimeField(auto_now=True,verbose_name='修改时间')
     class Meta:
@@ -52,7 +52,7 @@ class Content(models.Model):
 
 class URL(models.Model):
     uid = models.AutoField(primary_key=True)
-    url = models.CharField(max_length=50,unique=True,verbose_name='索引网址')
+    url = models.CharField(max_length=150,unique=True,verbose_name='索引网址')
     get = models.CharField(max_length=1,default='否',verbose_name='是否爬行')
     ip = models.CharField(max_length=15,verbose_name='IP地址')
     change_time = models.DateTimeField(auto_now=True,verbose_name='修改时间')
@@ -63,7 +63,7 @@ class URL(models.Model):
 
 class Other_Url(models.Model):
     uid = models.AutoField(primary_key=True)
-    url = models.CharField(max_length=100,unique=True,verbose_name='爬行网址')
+    url = models.CharField(max_length=150,unique=True,verbose_name='爬行网址')
     title = models.CharField(max_length=220, default='None',verbose_name='网站标题')
     power = models.CharField(max_length=200, default='None',verbose_name='容器/语言')
     server = models.CharField(max_length=100, default='None',verbose_name='服务器类型')
@@ -90,7 +90,7 @@ class Setting(models.Model):
 
 class Show_Data(models.Model):
     uid = models.AutoField(primary_key=True)
-    url = models.CharField(max_length=50,unique=True,verbose_name='展示网址')
+    url = models.CharField(max_length=150,unique=True,verbose_name='展示网址')
     title = models.CharField(max_length=200,default='None',verbose_name='网站标题')
     power = models.CharField(max_length=150,default='None',verbose_name='容器/语言')
     server = models.CharField(max_length=150,default='None',verbose_name='服务器类型')
@@ -116,7 +116,7 @@ class Show_Data(models.Model):
 
 class Error_Log(models.Model):
     uid = models.AutoField(primary_key=True)
-    url = models.CharField(max_length=100,verbose_name='异常网址')
+    url = models.CharField(max_length=150,verbose_name='异常网址')
     error = models.TextField(verbose_name='报错内容')
     change_time = models.DateTimeField(auto_now=True,verbose_name='修改时间')
     class Meta:
