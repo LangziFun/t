@@ -74,7 +74,7 @@ def ResetCrawl(db=Dbname):
     try:
         conn = pymysql.connect(host=host,user=username,password=password,port=port,db=db,charset='utf8')
         cursor = conn.cursor()
-        cursor.execute('update url set `get`="否"')
+        cursor.execute('update URL set `get`="否"')
         conn.commit()
         cursor.close()
         conn.close()
