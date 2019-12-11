@@ -25,7 +25,7 @@ def Cor():
     # 返回一个小时内，CPU/内存 使用率% 和使用的宽带 上传/下载量 M
     new = network()
     # 返回 ('25.7%', '2.3%', '0Mb', '0Mb')
-    return (str(psutil.virtual_memory().percent)+'%',str(psutil.cpu_percent(True))+'%',str(new[0])+'Mb',str(new[1])+'Mb')
+    return (str(psutil.cpu_percent(True))+'%',str(psutil.virtual_memory().percent)+'%',str(new[0])+'Mb',str(new[1])+'Mb')
 
 if __name__ == '__main__':
     print('内存使用率:{}%'.format(psutil.virtual_memory().percent))
